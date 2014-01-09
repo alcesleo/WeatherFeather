@@ -57,7 +57,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="wp12_jb222rw_weatherModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="wp12_jb222rw_weatherEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="WeatherEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Forecast" EntityType="wp12_jb222rw_weatherModel.Forecast" />
           <EntitySet Name="ForecastPeriod" EntityType="wp12_jb222rw_weatherModel.ForecastPeriod" />
           <AssociationSet Name="FK_ForecastPeriod_Forecast" Association="wp12_jb222rw_weatherModel.FK_ForecastPeriod_Forecast">
@@ -111,7 +111,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wp12_jb222rw_weatherModelStoreContainer" CdmEntityContainer="wp12_jb222rw_weatherEntities">
+        <EntityContainerMapping StorageEntityContainer="wp12_jb222rw_weatherModelStoreContainer" CdmEntityContainer="WeatherEntities">
           <EntitySetMapping Name="Forecast">
             <EntityTypeMapping TypeName="wp12_jb222rw_weatherModel.Forecast">
               <MappingFragment StoreEntitySet="Forecast">

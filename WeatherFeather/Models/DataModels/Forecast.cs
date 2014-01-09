@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeatherFeather.Models.DataModels
+namespace WeatherFeather.Models
 {
     using System;
     using System.Collections.Generic;

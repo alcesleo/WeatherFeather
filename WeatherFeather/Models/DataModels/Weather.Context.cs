@@ -13,10 +13,10 @@ namespace WeatherFeather.Models.DataModels
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class wp12_jb222rw_weatherEntities : DbContext
+    public partial class WeatherEntities : DbContext
     {
-        public wp12_jb222rw_weatherEntities()
-            : base("name=wp12_jb222rw_weatherEntities")
+        public WeatherEntities()
+            : base("name=WeatherEntities")
         {
         }
     
