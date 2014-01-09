@@ -3,45 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WeatherFeather.Models;
 using WeatherFeather.Webservices;
+using WeatherFeather.ViewModels;
 
 namespace WeatherFeather.Controllers
 {
     public class ForecastController : Controller
     {
+        private IWeatherService _service;
+
+        public ForecastController()
+            :this(new WeatherService())
+        {
+            // Empty
+        }
+
+        public ForecastController(IWeatherService service)
+        {
+            _service = service;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _service.Dispose();
+            base.Dispose(disposing);
+        }
+
         //
         // GET: /Forecast/
 
         public ActionResult Index()
         {
-            var days = new List<Models.ForecastPeriod>();
-            
-            //days.Add(new Models.Day {
-            //    AirPressure = 2.3,
-            //    CreatedAt = DateTime.Today,
-            //    WindDirection = "SW",
-            //    Percipitation = 0.0,
-            //    Symbol = 4,
-            //    Temperature = 4.6,
-            //    WindSpeed = 200
-            //});  
-            //days.Add(new Models.Day {
-            //    AirPressure = 2.3,
-            //    CreatedAt = DateTime.Today,
-            //    WindDirection = "SW",
-            //    Percipitation = 0.0,
-            //    Symbol = 4,
-            //    Temperature = 4.6,
-            //    WindSpeed = 200
-            //});  
-            //var forecasts = new Models.Forecast {
-            //    Region = "Göteborg",
-            //    Country = "SE",
-            //    Location = "Lunden",
-            //    Days = days
-            //};
-            var forecast = new SkywatchWebservice().GetForecast("Göteborg");
-            return View("Forecast", forecast);
+            return View("Index", new ForecastIndexViewModel());
+        }
+
+        //
+        // POST: /Forecast/
+
+        public ActionResult Index(ForecastIndexViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                //whatever.Search(viewModel.SearchLocation);
+                //if (whatever.HasLocationAlternatives)
+                // TempData.Add("Locations", whatever.Locations);
+                // redirect to locations
+            }
+            return View();
         }
 
     }

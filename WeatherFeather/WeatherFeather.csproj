@@ -162,6 +162,7 @@
     <Compile Include="Models\Repositories\IWeatherRepository.cs" />
     <Compile Include="Models\Repositories\WeatherRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ForecastIndexViewModel.cs" />
     <Compile Include="Webservices\SkywatchWebservice.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,13 +279,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Forecast\Index.cshtml" />
-    <Content Include="Views\Forecast\_Day.cshtml" />
+    <Content Include="Views\Forecast\_Period.cshtml" />
     <Content Include="Views\Forecast\Forecast.cshtml" />
+    <Content Include="Views\Forecast\_SearchForm.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

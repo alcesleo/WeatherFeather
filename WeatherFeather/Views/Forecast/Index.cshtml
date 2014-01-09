@@ -1,5 +1,14 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model WeatherFeather.ViewModels.ForecastIndexViewModel
+
+@{
+    ViewBag.Title = "Forecasts";
 }
 
-<h2>Index</h2>
+<h2>Forecasts</h2>
+
+@Html.Partial("_SearchForm", Model)
+
+<div class="list-group">
+
+
+</div>

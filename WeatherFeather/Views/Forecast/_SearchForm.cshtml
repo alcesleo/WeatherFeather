@@ -1,0 +1,11 @@
+﻿@model WeatherFeather.ViewModels.ForecastIndexViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(model => model.SearchLocation, "Please search for a location")
+    @Html.TextBoxFor(model => model.SearchLocation, new { autofocus = "autofocus" })
+    <input type="submit" value="Search" />
+}
