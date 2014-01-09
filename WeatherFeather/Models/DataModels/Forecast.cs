@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeatherFeather.Models
+namespace WeatherFeather.Models.DataModels
 {
     using System;
     using System.Collections.Generic;
@@ -20,8 +20,8 @@ namespace WeatherFeather.Models
         }
     
         public int ForecastID { get; set; }
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public string Country { get; set; }
         public string Region { get; set; }
         public string Location { get; set; }

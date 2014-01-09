@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="wp12_jb222rw_weatherModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="wp12_jb222rw_weatherModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="wp12_jb222rw_weatherModelStoreContainer">
           <EntitySet Name="Forecast" EntityType="wp12_jb222rw_weatherModel.Store.Forecast" store:Type="Tables" Schema="app" />
           <EntitySet Name="ForecastPeriod" EntityType="wp12_jb222rw_weatherModel.Store.ForecastPeriod" store:Type="Tables" Schema="app" />
@@ -52,7 +52,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="wp12_jb222rw_weatherModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -69,8 +70,8 @@
             <PropertyRef Name="ForecastID" />
           </Key>
           <Property Name="ForecastID" Type="Int32" Nullable="false" />
-          <Property Name="Latitude" Type="Decimal" Nullable="false" />
-          <Property Name="Longitude" Type="Decimal" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
           <Property Name="Region" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="Location" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
@@ -84,10 +85,10 @@
           <Property Name="ForecastID" Type="Int32" Nullable="false" />
           <Property Name="Symbol" Type="Int32" Nullable="false" />
           <Property Name="WindDirection" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
-          <Property Name="Temperature" Type="Decimal" Nullable="false" />
-          <Property Name="AirPressure" Type="Decimal" Nullable="false" />
-          <Property Name="WindSpeed" Type="Decimal" Nullable="false" />
-          <Property Name="Percipitation" Type="Decimal" Nullable="false" />
+          <Property Name="Temperature" Type="Double" Nullable="false" />
+          <Property Name="AirPressure" Type="Double" Nullable="false" />
+          <Property Name="WindSpeed" Type="Double" Nullable="false" />
+          <Property Name="Percipitation" Type="Double" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Forecast" Relationship="wp12_jb222rw_weatherModel.FK_ForecastPeriod_Forecast" FromRole="ForecastPeriod" ToRole="Forecast" />
         </EntityType>

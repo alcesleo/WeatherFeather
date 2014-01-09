@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b927727740745e1802233017f981955" Name="Diagram1">
-        <EntityTypeShape EntityType="wp12_jb222rw_weatherModel.Forecast" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="wp12_jb222rw_weatherModel.ForecastPeriod" Width="1.5" PointX="4" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="d3f18f3ee0df4f348032e9110c625203" Name="Diagram1">
+        <EntityTypeShape EntityType="wp12_jb222rw_weatherModel.Forecast" Width="1.5" PointX="1.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="wp12_jb222rw_weatherModel.ForecastPeriod" Width="1.5" PointX="4.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="wp12_jb222rw_weatherModel.FK_ForecastPeriod_Forecast" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

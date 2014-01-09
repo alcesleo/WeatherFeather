@@ -135,26 +135,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModels\Forecast.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Forecast.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DataModels\Forecast.cs">
-      <DependentUpon>Forecast.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataModels\Forecast.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Forecast.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataModels\Forecast1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Forecast.tt</DependentUpon>
+      <DependentUpon>Weather.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataModels\ForecastPeriod.cs">
-      <DependentUpon>Forecast.tt</DependentUpon>
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataModels\Weather.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataModels\Weather.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataModels\Weather.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Weather.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ForecastPeriod.cs" />
     <Compile Include="Models\Forecast.cs" />
@@ -227,23 +227,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="Models\DataModels\Forecast.edmx">
+    <EntityDeploy Include="Models\DataModels\Weather.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Forecast.Designer.cs</LastGenOutput>
+      <LastGenOutput>Weather.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataModels\Forecast.Context.tt">
+    <Content Include="Models\DataModels\Weather.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Forecast.edmx</DependentUpon>
-      <LastGenOutput>Forecast.Context.cs</LastGenOutput>
+      <DependentUpon>Weather.edmx</DependentUpon>
+      <LastGenOutput>Weather.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DataModels\Forecast.edmx.diagram">
-      <DependentUpon>Forecast.edmx</DependentUpon>
+    <Content Include="Models\DataModels\Weather.edmx.diagram">
+      <DependentUpon>Weather.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\DataModels\Forecast.tt">
+    <Content Include="Models\DataModels\Weather.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Forecast.edmx</DependentUpon>
-      <LastGenOutput>Forecast1.cs</LastGenOutput>
-      <CustomToolNamespace>WeatherFeather.Models</CustomToolNamespace>
+      <DependentUpon>Weather.edmx</DependentUpon>
+      <LastGenOutput>Weather.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

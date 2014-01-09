@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeatherFeather.Models
+namespace WeatherFeather.Models.DataModels
 {
     using System;
     using System.Collections.Generic;
@@ -18,10 +18,10 @@ namespace WeatherFeather.Models
         public int ForecastID { get; set; }
         public int Symbol { get; set; }
         public string WindDirection { get; set; }
-        public decimal Temperature { get; set; }
-        public decimal AirPressure { get; set; }
-        public decimal WindSpeed { get; set; }
-        public decimal Percipitation { get; set; }
+        public double Temperature { get; set; }
+        public double AirPressure { get; set; }
+        public double WindSpeed { get; set; }
+        public double Percipitation { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual Forecast Forecast { get; set; }
