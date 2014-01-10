@@ -24,6 +24,16 @@ namespace WeatherFeather.Models.Repositories
             return QueryForecasts().SingleOrDefault(f => f.ForecastID == forecastId);
         }
 
+        public Forecast GetForecastByLatLng(double lat, double lng)
+        {
+            return QueryForecasts().SingleOrDefault(f => f.Latitude == lat && f.Longitude == lng);
+        }
+
+        public Forecast GetForecastByLocation(string location)
+        {
+            return QueryForecasts().SingleOrDefault(f => f.Location == location);
+        }
+
         public abstract void InsertForecast(Forecast forecast);
         public abstract void UpdateForecast(Forecast forecast);
         public abstract void DeleteForecast(int forecastId);
@@ -62,7 +72,6 @@ namespace WeatherFeather.Models.Repositories
             Dispose(true /* disposing */);
             GC.SuppressFinalize(this);
         }
-
 
     }
 }

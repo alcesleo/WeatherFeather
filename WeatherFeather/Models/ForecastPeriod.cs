@@ -10,17 +10,21 @@ namespace WeatherFeather.Models
     public partial class ForecastPeriod
     {
 
-        //public ForecastPeriod(JToken dayToken)
-        //{
-        //    Temperature = (double)dayToken["temperature"];
-        //    AirPressure = (double)dayToken["pressure"];
-        //    WindDirection = (string)dayToken["winddirection"];
-        //    WindSpeed = (double)dayToken["windspeed"];
-        //    Symbol = (int)dayToken["symbol"];
-        //    Percipitation = (double)dayToken["percipitation"];
+        public ForecastPeriod(JToken properties)
+        {
+            AirPressure = Convert.ToDouble((string)properties["pressure"], CultureInfo.InvariantCulture);
+            Temperature = Convert.ToDouble((string)properties["temp"], CultureInfo.InvariantCulture);
+            WindSpeed = Convert.ToDouble((string)properties["windspeed"], CultureInfo.InvariantCulture);
+            WindDirection = (string)properties["pressure"];
+            Symbol = Convert.ToInt32((string)properties["symbol"]);
+            Date = DateTime.Parse((string)properties["date"]);
 
-        //    Date = DateTime.ParseExact((string)dayToken["date"],
-        //        "ddd MMM dd HH:mm:ss zz00 yyyy", CultureInfo.InvariantCulture);
-        //}
+            // Percipitation can be empty (always the last two)
+            // FIXME: This code is really horrendously ugly
+            double percipitation = 0.0;
+            Double.TryParse((string)properties["percipitation"], System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out percipitation);
+            Percipitation = percipitation;
+        }
+
     }
 }

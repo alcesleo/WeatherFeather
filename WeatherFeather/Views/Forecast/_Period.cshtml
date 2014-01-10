@@ -5,10 +5,14 @@
     var imageUrl = "http://api.yr.no/weatherapi/weathericon/1.0/?symbol=" + @Model.Symbol + ";content_type=image/png";
 }
 
-<div class="row">
-    <div class="list-group-item">
-        <h4 class="list-group-item-heading">@Model.Date</h4>
-        <p class="list-group-item-text">...</p>
-        <img src="@imageUrl" alt="" />
-    </div>
+<div class="list-group-item">
+    <h4 class="list-group-item-heading">@Model.Date.DayOfWeek</h4>
+    <img src="@imageUrl" alt="" />
+    <ul>
+        <li>Air pressure: @Model.AirPressure</li>
+        <li>Percipitation: @Model.Percipitation</li>
+        <li>Temperature: @Model.Temperature C</li>
+        <li>Wind direction: @Model.WindDirection</li>
+        <li>Wind speed: @Model.WindSpeed m/s</li>
+    </ul>
 </div>

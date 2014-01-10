@@ -8,7 +8,14 @@
 
 @Html.Partial("_SearchForm", Model)
 
-<div class="list-group">
+@if (Model.Forecast != null)
+{
+    <div class="list-group">
 
+        @foreach (var period in Model.Forecast.ForecastPeriod)
+        {
+            @Html.Partial("_Period", period);
+        }
 
-</div>
+    </div>
+}

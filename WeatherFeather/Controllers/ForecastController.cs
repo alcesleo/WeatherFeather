@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WeatherFeather.Models;
+using WeatherFeather.Models.Services;
 using WeatherFeather.Webservices;
 using WeatherFeather.ViewModels;
 
@@ -11,6 +12,9 @@ namespace WeatherFeather.Controllers
 {
     public class ForecastController : Controller
     {
+
+        #region housekeeping
+
         private IWeatherService _service;
 
         public ForecastController()
@@ -30,17 +34,33 @@ namespace WeatherFeather.Controllers
             base.Dispose(disposing);
         }
 
+        #endregion
+
         //
         // GET: /Forecast/
 
         public ActionResult Index()
         {
+            _service.Search("Göteborg");
+            if (_service.HasExactMatch)
+            {
+                var vm = new ForecastIndexViewModel();
+                vm.Forecast = _service.Forecast;
+                return View("Index", vm);
+            }
+            else
+            {
+                var list = _service.ForecastAlternatives;
+            }
+
             return View("Index", new ForecastIndexViewModel());
         }
 
         //
         // POST: /Forecast/
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(ForecastIndexViewModel viewModel)
         {
             if (ModelState.IsValid)

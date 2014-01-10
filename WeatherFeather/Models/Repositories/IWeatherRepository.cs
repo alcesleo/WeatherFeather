@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace WeatherFeather.Models.Repositories
 {
-    interface IWeatherRepository : IDisposable
+    public interface IWeatherRepository : IDisposable
     {
         IEnumerable<Forecast> GetForecasts();
         Forecast GetForecastById(int forecastId);
+        Forecast GetForecastByLatLng(double lat, double lng);
+        Forecast GetForecastByLocation(string location);
         void InsertForecast(Forecast forecast);
         void UpdateForecast(Forecast forecast);
         void DeleteForecast(int forecastId);
