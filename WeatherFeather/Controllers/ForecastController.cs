@@ -44,6 +44,13 @@ namespace WeatherFeather.Controllers
             return View("Index", new ForecastIndexViewModel());
         }
 
+        public ActionResult LatLng(double lat, double lng)
+        {
+            _service.Search(lat, lng);
+            // TODO: Errors
+            return View("Index", new ForecastIndexViewModel { Forecast = _service.Forecast });
+        }
+
         //
         // POST: /Forecast/
 
@@ -67,7 +74,7 @@ namespace WeatherFeather.Controllers
                 }
             }
             // TODO: errors
-            return View();
+            return View("Index", viewModel);
         }
 
         public ActionResult ChooseLocation()

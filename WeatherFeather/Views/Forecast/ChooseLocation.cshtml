@@ -11,7 +11,7 @@
 @foreach (var forecast in Model)
 {
     var linkText = String.Format("{0}, {1}, {2}", forecast.Location, forecast.Region, forecast.Country);
-    <li>@Html.ActionLink(linkText, "Index")</li> 
+    <li>@Html.ActionLink(linkText, "LatLng", new { lat = forecast.Latitude, lng = forecast.Longitude })</li> 
 }
 
 </ul>

@@ -9,6 +9,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using WeatherFeather.Models;
+using System.Globalization;
 
 namespace WeatherFeather.Webservices
 {
@@ -63,7 +64,9 @@ namespace WeatherFeather.Webservices
 
         public bool Search(double lat, double lng)
         {
-            var url = String.Format("http://skywatch.code-monkey.se/adapter.php?action=2&lng={0}&lat={1}", lat, lng);
+            var url = String.Format("http://skywatch.code-monkey.se/adapter.php?action=2&lng={0}&lat={1}", 
+                lat.ToString(CultureInfo.InvariantCulture), // Force dot
+                lng.ToString(CultureInfo.InvariantCulture));
             return MakeRequest(url);
         }
 

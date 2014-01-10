@@ -10,18 +10,28 @@ namespace WeatherFeather.Models.Services
 {
     public class WeatherService : IWeatherService
     {
+        public bool HasExactMatch
+        {
+            get
+            {
+                return Forecast != null;
+            }
+        }
+        public Forecast Forecast { get; private set; }
+        public IEnumerable<Forecast> ForecastAlternatives { get; private set; }
 
         private IWeatherRepository _repository;
-        private SkywatchWebservice _service;
+        private SkywatchWebservice _webservice;
         private SkywatchWebservice Webservice
         {
             get
             {
-                if (_service == null)
+                // Lazy init
+                if (_webservice == null)
                 {
-                    _service = new SkywatchWebservice();
+                    _webservice = new SkywatchWebservice();
                 }
-                return _service;
+                return _webservice;
             }
         }
 
@@ -76,26 +86,6 @@ namespace WeatherFeather.Models.Services
         {
             // TODO: correct?
             _repository.Dispose();
-        }
-
-        public bool HasExactMatch
-        {
-            get
-            {
-                return Forecast != null;
-            }
-        }
-
-        public Forecast Forecast
-        {
-            get;
-            private set;
-        }
-
-        public IEnumerable<Forecast> ForecastAlternatives
-        {
-            get;
-            private set;
         }
     }
 }
