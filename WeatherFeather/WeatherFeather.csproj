@@ -286,7 +286,7 @@
     <Content Include="Views\Forecast\Index.cshtml" />
     <Content Include="Views\Forecast\_SearchForm.cshtml" />
     <Content Include="Views\Forecast\_Forecast.cshtml" />
-    <Content Include="Views\Forecast\ChooseForecast.cshtml" />
+    <Content Include="Views\Forecast\ChooseLocation.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

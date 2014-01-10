@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WeatherFeather.Models.Forecast>
+
+@{
+    ViewBag.Title = "Choose forecast";
+}
+
+<h2>ChooseForecast</h2>
+
+<ul>
+
+@foreach (var forecast in Model)
+{
+    var linkText = String.Format("{0}, {1}, {2}", forecast.Location, forecast.Region, forecast.Country);
+    <li>@Html.ActionLink(linkText, "Index")</li> 
+}
+
+</ul>

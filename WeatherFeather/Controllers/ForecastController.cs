@@ -41,18 +41,6 @@ namespace WeatherFeather.Controllers
 
         public ActionResult Index()
         {
-            _service.Search("Göteborg");
-            if (_service.HasExactMatch)
-            {
-                var vm = new ForecastIndexViewModel();
-                vm.Forecast = _service.Forecast;
-                return View("Index", vm);
-            }
-            else
-            {
-                var list = _service.ForecastAlternatives;
-            }
-
             return View("Index", new ForecastIndexViewModel());
         }
 
@@ -65,12 +53,28 @@ namespace WeatherFeather.Controllers
         {
             if (ModelState.IsValid)
             {
-                //whatever.Search(viewModel.SearchLocation);
-                //if (whatever.HasLocationAlternatives)
-                // TempData.Add("Locations", whatever.Locations);
-                // redirect to locations
+                _service.Search(viewModel.SearchLocation);
+                if (_service.HasExactMatch)
+                {
+                    var vm = new ForecastIndexViewModel();
+                    vm.Forecast = _service.Forecast;
+                    return View("Index", vm);
+                }
+                else
+                {
+                    TempData.Add("alternatives", _service.ForecastAlternatives);
+                    return RedirectToAction("ChooseLocation");
+                }
             }
+            // TODO: errors
             return View();
+        }
+
+        public ActionResult ChooseLocation()
+        {
+            var alternatives = TempData["alternatives"] as IEnumerable<Forecast>;
+            // TODO: Errors
+            return View("ChooseLocation", alternatives);
         }
 
     }

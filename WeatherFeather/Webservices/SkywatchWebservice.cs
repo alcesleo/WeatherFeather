@@ -35,7 +35,17 @@ namespace WeatherFeather.Webservices
         #region Public
 
         public Forecast Forecast { get; set; }
-        public List<Forecast> ForecastAlternatives { get; set; }
+
+        private List<Forecast> _alternatives = new List<Forecast>();
+        public IEnumerable<Forecast> ForecastAlternatives 
+        {
+            get
+            {
+                // Protect privacy leak
+                return _alternatives.AsReadOnly();
+            }
+        }
+
         public bool HasExactMatch
         {
             get
@@ -71,39 +81,38 @@ namespace WeatherFeather.Webservices
         /// <returns>True if a forecast was found, false if multiple locations were matched</returns>
         private bool MakeRequest(string url)
         { 
-            var responseObject = GetParsedJsonFromUrl(url);
-            RaiseForError(responseObject);
-            return ParseResponse(responseObject);
-        }
+            var response = GetJsonFromUrl(url);
 
-        /// <summary>
-        /// Parses a response object into either a Forecast or ForecastAlternatives.
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns>True if forecast, false if alternatives</returns>
-        private bool ParseResponse(JObject obj)
-        {
-            if (IsExactMatch(obj))
+            // if array
+            if (response.StartsWith("["))
             {
-                Forecast = new Forecast(obj);
-                return true;
+                ParseAlternatives(response);
+                return false;
             }
             else
             {
-                foreach (var f in obj)
-                {
-                    ForecastAlternatives.Add(new Forecast(obj));
-                }
-                return false;
+                ParseForecast(response);
+                return true;
             }
         }
 
-        /// <summary>
-        /// Gets a JObject from a URL
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        private JObject GetParsedJsonFromUrl(string url)
+        private void ParseAlternatives(string jsonArray)
+        {
+            var arr = JArray.Parse(jsonArray);
+            foreach (var f in arr)
+            {
+                _alternatives.Add(new Forecast(f));
+            }
+        }
+
+        private void ParseForecast(string jsonObject)
+        {
+            var obj = JObject.Parse(jsonObject);
+            RaiseForError(obj); // an object can also be an error message
+            Forecast = new Forecast(obj);
+        }
+
+        private string GetJsonFromUrl(string url)
         {
             var rawJson = string.Empty;
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -114,8 +123,7 @@ namespace WeatherFeather.Webservices
                 rawJson = reader.ReadToEnd();
             }
 
-            // Parse
-            return JObject.Parse(rawJson);
+            return rawJson;
         }
 
         /// <summary>
