@@ -21,12 +21,11 @@ namespace WeatherFeather.Models
             Longitude = (double)properties["city"]["lng"];
 
             // Periods
-            ForecastPeriod = new List<ForecastPeriod>();
+            ForecastPeriods = new List<ForecastPeriod>();
             var forecasts = (JArray)properties["forcasts"]; // Yes, the key is misspelled in the response
             foreach (var period in forecasts)
             {
-                // TODO: Pluralize
-                ForecastPeriod.Add(new ForecastPeriod(period));
+                ForecastPeriods.Add(new ForecastPeriod(period));
             }
         }
 

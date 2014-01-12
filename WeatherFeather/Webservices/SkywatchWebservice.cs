@@ -92,11 +92,13 @@ namespace WeatherFeather.Webservices
                 ParseAlternatives(response);
                 return false;
             }
-            else
+            // if object
+            else if (response.StartsWith("{"))
             {
                 ParseForecast(response);
                 return true;
             }
+            throw new Exception("Invalid response string");
         }
 
         private void ParseAlternatives(string jsonArray)
@@ -113,6 +115,7 @@ namespace WeatherFeather.Webservices
             var obj = JObject.Parse(jsonObject);
             RaiseForError(obj); // an object can also be an error message
             Forecast = new Forecast(obj);
+            Forecast.LastUpdated = DateTime.Now;
         }
 
         private string GetJsonFromUrl(string url)

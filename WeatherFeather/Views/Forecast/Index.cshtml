@@ -12,7 +12,7 @@
 {
     <div class="list-group">
 
-        @foreach (var period in Model.Forecast.ForecastPeriod)
+        @foreach (var period in Model.Forecast.ForecastPeriods)
         {
             @Html.Partial("_Period", period);
         }

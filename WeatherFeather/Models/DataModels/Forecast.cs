@@ -16,7 +16,7 @@ namespace WeatherFeather.Models
     {
         public Forecast()
         {
-            this.ForecastPeriod = new HashSet<ForecastPeriod>();
+            this.ForecastPeriods = new HashSet<ForecastPeriod>();
         }
     
         public int ForecastID { get; set; }
@@ -25,7 +25,8 @@ namespace WeatherFeather.Models
         public string Country { get; set; }
         public string Region { get; set; }
         public string Location { get; set; }
+        public System.DateTime LastUpdated { get; set; }
     
-        public virtual ICollection<ForecastPeriod> ForecastPeriod { get; set; }
+        public virtual ICollection<ForecastPeriod> ForecastPeriods { get; set; }
     }
 }

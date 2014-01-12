@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using WeatherFeather.Models.DataModels;
@@ -64,7 +65,16 @@ namespace WeatherFeather.Models.Repositories
 
         public override void Save()
         {
-            _context.SaveChanges();
+            // http://stackoverflow.com/questions/4682504/ef-code-first-giving-me-error-cannot-insert-explicit-value-for-identity-column-i
+            // http://stackoverflow.com/questions/5345890/getting-exact-error-type-in-from-dbvalidationexception/6593432#6593432
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private bool _disposed = false;
