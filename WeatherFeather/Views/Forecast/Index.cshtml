@@ -7,6 +7,9 @@
 <h2>Forecasts</h2>
 
 @Html.Partial("_SearchForm", Model)
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 @if (Model.Forecast != null)
 {
