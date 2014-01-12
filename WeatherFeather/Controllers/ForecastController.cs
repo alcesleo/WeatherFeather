@@ -70,6 +70,7 @@ namespace WeatherFeather.Controllers
         public ActionResult LatLng(double lat, double lng)
         {
             _service.Search(lat, lng);
+            _service.Forecast.ForecastPeriods.ToList(); // Force loading from db to prevent already disposed error
             TempData.Add("forecast", _service.Forecast);
             return RedirectToAction("Index");
         }
