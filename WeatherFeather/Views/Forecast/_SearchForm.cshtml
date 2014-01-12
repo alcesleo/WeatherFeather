@@ -5,7 +5,12 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    @Html.LabelFor(model => model.SearchLocation, "Please search for a location")
-    @Html.TextBoxFor(model => model.SearchLocation, new { autofocus = "autofocus" })
-    <input type="submit" value="Search" />
+
+
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-success">Search!</button>
+      </span>
+      @Html.TextBoxFor(model => Model.SearchLocation, new { autofocus="autofocus", @class="form-control", placeholder="please search for a location" })
+    </div><!-- /input-group -->
 }
