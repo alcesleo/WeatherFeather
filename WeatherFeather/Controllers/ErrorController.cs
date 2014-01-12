@@ -10,6 +10,8 @@ namespace WeatherFeather.Controllers
     {
         public ActionResult Error()
         {
+            // For some exceptionally stupid reason, this only works if it is located in
+            // the Shared views, and not in the Error views.
             return View("Error");
         }
 

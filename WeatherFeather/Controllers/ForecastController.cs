@@ -37,20 +37,10 @@ namespace WeatherFeather.Controllers
 
         #endregion
 
-        public ActionResult Enc()
-        {
-            string test1 = "VÃ¤stra GÃ¶taland";
-            string test2 = "Stockholm";
-
-            byte[] bytes = Encoding.Default.GetBytes(test2);
-            test1 = Encoding.UTF8.GetString(bytes);
-            return View("Index");
-        }
-
-
         //
         // GET: /Forecast/
 
+        [HandleError]
         public ActionResult Index()
         {
             var vm = new ForecastIndexViewModel();
