@@ -12,6 +12,14 @@
 {
     <div class="list-group">
 
+        @if (Model.Forecast.Location != "")
+        {
+            <div class="list-group-item active">
+                <h4 class="list-group-item-heading"><strong>@Model.Forecast.Location</strong></h4>
+            </div>
+        }
+
+
         @foreach (var period in Model.Forecast.ForecastPeriods)
         {
             @Html.Partial("_Period", period);

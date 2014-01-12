@@ -67,14 +67,7 @@ namespace WeatherFeather.Models.Repositories
         {
             // http://stackoverflow.com/questions/4682504/ef-code-first-giving-me-error-cannot-insert-explicit-value-for-identity-column-i
             // http://stackoverflow.com/questions/5345890/getting-exact-error-type-in-from-dbvalidationexception/6593432#6593432
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.SaveChanges();
         }
 
         private bool _disposed = false;
