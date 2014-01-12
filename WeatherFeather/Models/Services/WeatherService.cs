@@ -76,7 +76,16 @@ namespace WeatherFeather.Models.Services
         public void Search(string location)
         {
             // Get from db
-            var forecast = _repository.GetForecastByLocation(location);
+            Forecast forecast = null;
+            try
+            {
+                forecast = _repository.GetForecastByLocation(location);
+            }
+            catch (InvalidOperationException)
+            {
+                // This means that there's probably more than one hit
+            }
+
             if (IsCurrent(forecast))
             {
                 Forecast = forecast;
