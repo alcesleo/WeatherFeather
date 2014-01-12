@@ -7,10 +7,14 @@
 
 
 
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-success">Search!</button>
-      </span>
-      @Html.TextBoxFor(model => Model.SearchLocation, new { autofocus="autofocus", @class="form-control", placeholder="please search for a location" })
-    </div><!-- /input-group -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success">Search!</button>
+              </span>
+              @Html.TextBoxFor(model => Model.SearchLocation, new { autofocus="autofocus", @class="form-control", placeholder="please search for a location" })
+            </div><!-- /input-group -->
+        </div>
+    </div>
 }

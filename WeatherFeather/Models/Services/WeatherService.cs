@@ -61,6 +61,18 @@ namespace WeatherFeather.Models.Services
         #endregion housekeeping
 
 
+        // Search through API no matter if cache exists
+        public void ExternalSearch(string location)
+        {
+            Webservice.Search(location);
+            if (Webservice.HasExactMatch)
+            {
+                Forecast = Webservice.Forecast;
+                UpdateCache();
+            }
+        }
+
+
         public void Search(string location)
         {
             // Get from db

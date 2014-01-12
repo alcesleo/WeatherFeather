@@ -10,20 +10,27 @@
 
 @if (Model.Forecast != null)
 {
-    <div class="list-group">
+    <div class="row">
+        <div class="col-md-12">
 
-        @if (Model.Forecast.Location != "")
-        {
-            <div class="list-group-item active">
-                <h4 class="list-group-item-heading"><strong>@Model.Forecast.Location</strong></h4>
+            <div class="list-group">
+
+                @if (Model.Forecast.Location != "")
+                {
+                    <div class="list-group-item active">
+                        <h4 class="list-group-item-heading"><strong>@Model.Forecast.Location</strong> @Model.Forecast.Region, @Model.Forecast.Country</h4>
+                        @Html.ActionLink("Not the right " + @Model.Forecast.Location + "?", "ShowAlternatives", new { location=@Model.Forecast.Location })
+                    </div>
+                }
+
+
+                @foreach (var period in Model.Forecast.ForecastPeriods)
+                {
+                    @Html.Partial("_Period", period);
+                }
+
             </div>
-        }
-
-
-        @foreach (var period in Model.Forecast.ForecastPeriods)
-        {
-            @Html.Partial("_Period", period);
-        }
-
+        </div>
     </div>
+    
 }

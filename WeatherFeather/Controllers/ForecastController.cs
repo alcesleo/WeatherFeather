@@ -41,14 +41,35 @@ namespace WeatherFeather.Controllers
 
         public ActionResult Index()
         {
-            return View("Index", new ForecastIndexViewModel());
+            var vm = new ForecastIndexViewModel();
+
+            // null if not existans
+            vm.Forecast = TempData["forecast"] as Forecast;
+
+            return View("Index", vm);
+        }
+
+        // Forces api call
+        public ActionResult ShowAlternatives(string location)
+        {
+            _service.ExternalSearch(location);
+            if (_service.HasExactMatch)
+            {
+                TempData.Add("forecast", _service.Forecast);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData.Add("alternatives", _service.ForecastAlternatives);
+                return RedirectToAction("ChooseLocation");
+            }
         }
 
         public ActionResult LatLng(double lat, double lng)
         {
             _service.Search(lat, lng);
-            // TODO: Errors
-            return View("Index", new ForecastIndexViewModel { Forecast = _service.Forecast });
+            TempData.Add("forecast", _service.Forecast);
+            return RedirectToAction("Index");
         }
 
         //
