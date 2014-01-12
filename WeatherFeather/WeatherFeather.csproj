@@ -253,6 +253,7 @@
       <LastGenOutput>Weather.cs</LastGenOutput>
       <CustomToolNamespace>WeatherFeather.Models</CustomToolNamespace>
     </Content>
+    <None Include="Properties\PublishProfiles\Kupan.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
