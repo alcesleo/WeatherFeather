@@ -20,13 +20,8 @@
 
                 @if (Model.Forecast.Location != "")
                 {
-
-                    // Ugly hack fix for weird encoding issue
-                    byte[] bytes = System.Text.Encoding.Default.GetBytes(@Model.Forecast.Region);
-                    var region = System.Text.Encoding.UTF8.GetString(bytes);
-
                     <div class="list-group-item active">
-                        <h4 class="list-group-item-heading"><strong>@Model.Forecast.Location</strong> @region @Model.Forecast.Country</h4>
+                        <h4 class="list-group-item-heading"><strong>@Model.Forecast.Location</strong> @Model.Forecast.Region @Model.Forecast.Country</h4>
                         @Html.ActionLink("Not the right " + @Model.Forecast.Location + "?", "ShowAlternatives", new { location=@Model.Forecast.Location })
                     </div>
                 }

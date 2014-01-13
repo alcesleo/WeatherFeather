@@ -98,7 +98,7 @@ namespace WeatherFeather.Webservices
                 ParseForecast(response);
                 return true;
             }
-            throw new Exception("Invalid response string");
+            throw new Exception("Invalid response json");
         }
 
         private void ParseAlternatives(string jsonArray)
